@@ -4,6 +4,10 @@ from app.core.identity import get_azure_credential
 from app.services.blob_service import upload_text, download_text
 from app.api.ingestion import router as ingestion_router
 
+
+from app.api.events import router as events_router
+app.include_router(events_router)
+
 app = FastAPI(title=settings.APP_NAME)
 
 
