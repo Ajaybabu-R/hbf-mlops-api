@@ -1,0 +1,27 @@
+name: Build and Push HBF MLOps API
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Log in to Azure Container Registry
+        run: |
+          echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_LOGIN_SERVER }} \
+          -u ${{ secrets.ACR_USERNAME }} --password-stdin
+
+      - name: Build Docker Image
+        run: |
+          docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/hbf-mlops-api:${{ github.run_number }} .
+
+      - name: Push Docker Image
+        run: |
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/hbf-mlops-api:${{ github.run_number }}
