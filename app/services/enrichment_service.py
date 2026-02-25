@@ -1,36 +1,41 @@
 from datetime import datetime
 import json
-from app.services.blob_service import upload_text, download_text
+from app.services.blob_service import upload_text, download_text, blob_exists
 
 
 def enrich_material(blob_name: str):
     """
-    Enrichment logic triggered by Event Grid.
+    Idempotent enrichment logic triggered by Event Grid.
 
     Flow:
-    - Read JSON from raw-data container
+    - If already enriched → skip
+    - Read JSON from raw-data
     - Add enrichment metadata
-    - Write enriched JSON to processed-data container
+    - Write enriched JSON to processed-data
     """
 
     try:
-        # 1️⃣ Read original file from raw-data
+        # 🛑 Idempotency Check
+        if blob_exists("processed-data", blob_name):
+            print(f"Skipping enrichment — already processed: {blob_name}")
+            return {"status": "already_processed"}
+
+        # 1️⃣ Read original file
         original_content = download_text("raw-data", blob_name)
 
-        # Convert string JSON to dict (if valid JSON)
         try:
             original_data = json.loads(original_content)
         except Exception:
             original_data = {"raw_content": original_content}
 
-        # 2️⃣ Add enrichment fields
+        # 2️⃣ Enrich data
         enriched_data = {
             "original_data": original_data,
             "enriched_at": datetime.utcnow().isoformat(),
             "status": "enriched"
         }
 
-        # 3️⃣ Write enriched output to processed-data
+        # 3️⃣ Write enriched output
         upload_text(
             "processed-data",
             blob_name,
