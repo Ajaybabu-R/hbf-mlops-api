@@ -1,0 +1,128 @@
+{
+	"name": "ds_input_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ajaymlopsstorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "hbf-sample-test"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ready_data.csv",
+				"container": "raw-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "MDM task",
+				"type": "String"
+			},
+			{
+				"name": "Type of Request",
+				"type": "String"
+			},
+			{
+				"name": "Material Number",
+				"type": "String"
+			},
+			{
+				"name": "Plant",
+				"type": "String"
+			},
+			{
+				"name": "Country of Plant Where Raw Material will be used",
+				"type": "String"
+			},
+			{
+				"name": "Material Description",
+				"type": "String"
+			},
+			{
+				"name": "Material Name",
+				"type": "String"
+			},
+			{
+				"name": "Country of origin",
+				"type": "String"
+			},
+			{
+				"name": "Region of origin",
+				"type": "String"
+			},
+			{
+				"name": "Material Category",
+				"type": "String"
+			},
+			{
+				"name": "Material Sub category",
+				"type": "String"
+			},
+			{
+				"name": "Spend Pool",
+				"type": "String"
+			},
+			{
+				"name": "Raw Material Use Class",
+				"type": "String"
+			},
+			{
+				"name": "Unnamed: 13",
+				"type": "String"
+			},
+			{
+				"name": "CAS Number",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Molecular Formula",
+				"type": "String"
+			},
+			{
+				"name": "Molecular Mass (g/mol)",
+				"type": "String"
+			},
+			{
+				"name": "Melting Point",
+				"type": "String"
+			},
+			{
+				"name": "Density",
+				"type": "String"
+			},
+			{
+				"name": "Commodity Code",
+				"type": "String"
+			},
+			{
+				"name": "text",
+				"type": "String"
+			},
+			{
+				"name": "hsn_2",
+				"type": "String"
+			},
+			{
+				"name": "hsn_4",
+				"type": "String"
+			},
+			{
+				"name": "hsn_6",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

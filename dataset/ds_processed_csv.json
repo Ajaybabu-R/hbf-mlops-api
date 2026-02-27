@@ -1,0 +1,27 @@
+{
+	"name": "ds_processed_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ajaymlopsstorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "hbf-sample-test"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ready_data_copy.csv",
+				"container": "processed-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

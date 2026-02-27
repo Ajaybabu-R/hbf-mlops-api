@@ -1,0 +1,15 @@
+{
+	"name": "ajay-mlops-adf",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned,UserAssigned",
+		"principalId": "f9fa210b-1741-4dfe-afc4-8ad3b3a02e45",
+		"tenantId": "cf5cd4e9-a8a8-44cd-8fe6-d716f62684ac",
+		"userAssignedIdentities": {
+			"/subscriptions/48f5743d-b35f-4c43-8a41-4bfbf4d42b05/resourcegroups/rg-gsk-langfuse-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/oidc-msi-ba55": {
+				"clientId": "3b459834-9d7a-4fa6-9a0a-44915e6ab1ef",
+				"principalId": "62f20ff2-031d-4376-9cf5-64c0442e944b"
+			}
+		}
+	}
+}
