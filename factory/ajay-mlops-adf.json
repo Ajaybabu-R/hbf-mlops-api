@@ -1,5 +1,11 @@
 {
 	"name": "ajay-mlops-adf",
+	"properties": {
+		"globalConfigurations": {
+			"factoryStagingLSReferenceName": "ajaymlopsstorage",
+			"factoryStagingLSType": "LinkedServiceReference"
+		}
+	},
 	"location": "centralindia",
 	"identity": {
 		"type": "SystemAssigned,UserAssigned",
